@@ -3,7 +3,7 @@ import '../styles/Banner.css'
 import Recommendation from './Recommendation'
 
 function Banner() {
-    var title='Lexilife'
+    var title='La Maison Jungle'
 
     return <div className='lmj-banner'>
         <img src={logo} alt='La maison jungle' className='lmj-logo'/>

@@ -20,7 +20,6 @@ function Cart({cart, updateCart}){
     // le premier paramètre est la fonction à exécuter
     // le second paramètre [total] correspond à un tableau de dépendances
 
-
     return isOpen ? (
         <div className='lmj-cart'>
             <button onClick={() => setIsOpen(false)}>Fermer</button>

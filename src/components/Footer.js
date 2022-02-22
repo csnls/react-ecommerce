@@ -2,9 +2,7 @@ import {useState} from 'react'
 // useState est un hook React qui permet d'ajouter l'état local React à une fonction composant.
 import {useEffect} from 'react'
 
-function anh(){
-    document.title = `J'aurai à payer`
-    }
+
 function Footer() {
 
     var [inputValue, setInputValue] = useState('')
@@ -15,9 +13,11 @@ function Footer() {
             alert('Il manque un arobase !')
         }
     }
-    
-    useEffect(anh)
 
+    useEffect(()=> {
+        return () => console.log (`Cette alert s'affiche qd Footer est retiré du DOM`)
+        }, []
+    )
 
     return (
         <div>

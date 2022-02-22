@@ -5,12 +5,20 @@ import Footer from './Footer'
 import 'bootstrap/dist/css/bootstrap.css';
 import {Container, Row, Col} from 'react-bootstrap'
 import {useState} from 'react'
+import {useEffect} from 'react'
 
 function App() {
 
-  var [cart, updateCart] = useState([])
+  var savedCart = localStorage.getItem('cart')
+  var [cart, updateCart] = useState(savedCart ? JSON.parse(savedCart) : [])
   // La mise au panier implique les composants Cart et ShoppingList
   // App est le parent commun aux deux, c'est pourquoi 'cart' et 'updateCart' sont déclarés ici
+  useEffect(()=> {
+    localStorage.setItem('cart', JSON.stringify(cart))
+    }, [cart]
+  )
+
+  var [isFooterShown, updateIsFooterShown] = useState(true)
 
   return (
     <div>
@@ -26,7 +34,8 @@ function App() {
           </Col>
         </Row>
       </Container>
-      <Footer/>
+      <button onClick={()=> updateIsFooterShown(!isFooterShown)}>Cacher</button>
+      {isFooterShown && <Footer/>}
     </div>
   )
 }
